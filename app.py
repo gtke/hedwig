@@ -24,13 +24,16 @@ def hedwig():
     gif     = translate(keyword)
 
     try:
-        return g.random_gif(keyword).media_url
+        return Response('\n'.join(g.random_gif(keyword).media_url),
+                        content_type='text/plain; charset=utf-8')
     except GiphyApiException:
         try:
-            return g.translate(keyword).media_url
+            return Response('\n'.join(g.translate(keyword).media_url),
+                            content_type='text/plain; charset=utf-8')
         except GiphyApiException:
             try:
-                g.search_list(keyword, limit=1)[0].media_url
+                return Response('\n'.join(g.search_list(keyword, limit=1)[0].media_url),
+                                content_type='text/plain; charset=utf-8')
             except (GiphyApiException, IndexError):
                     pass
 
