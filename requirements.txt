@@ -1,2 +1,2 @@
-flask==0.10.1i
+flask==0.10.1
 giphypop==0.1
