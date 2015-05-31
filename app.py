@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, Response, redirect
+from flask import Flask, request, Response, redirect, send_file
 import giphypop
 from giphypop import translate
 app = Flask(__name__)
@@ -24,15 +24,15 @@ def hedwig():
     gif     = translate(keyword)
 
     try:
-        return Response(g.random_gif(keyword).media_url,
+        return send_file(g.random_gif(keyword).media_url,
                         mimetype='image/gif')
     except GiphyApiException:
         try:
-            return Response(g.translate(keyword).media_url,
+            return send_file(g.translate(keyword).media_url,
                             mimetype='image/gif')
         except GiphyApiException:
             try:
-                return Response(g.search_list(keyword, limit=1)[0].media_url,
+                return send_file(g.search_list(keyword, limit=1)[0].media_url,
                                 mimetype='image/gif')
             except (GiphyApiException, IndexError):
                     pass
