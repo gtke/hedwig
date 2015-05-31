@@ -6,7 +6,7 @@ from giphypop import translate
 app = Flask(__name__)
 
 key = 'dc6zaTOxFJmzC'
-g = Giphy(api_key=key, strict=True)
+g = giphypop.Giphy(api_key=key, strict=True)
 
 responses = [
     "That sucks...",
