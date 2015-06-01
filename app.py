@@ -1,10 +1,14 @@
 import os
 import requests
 import json
+import pyslack
 import logging
 from flask import Flask, request, Response, redirect, send_file, json
 import giphypop
 from giphypop import translate
+from pyslack import SlackClient
+
+client = SlackClient('xoxp-5029789749-5008179958-5152873814-1e2b32')
 app = Flask(__name__)
 
 key = 'dc6zaTOxFJmzC'
@@ -36,11 +40,7 @@ def hedwig():
                 filename = g.search_list(keyword, limit=1[0]).media_url
             except (GiphyApiException, IndexError):
                     pass
-    payload = {'text': 'muteli'}
-    requests.post('https://hooks.slack.com/services/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',
-                  payload)
-    return 'hey'
-
+    return client.chat_post_message('#general', "test,testtttt", username='Hedwig')
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
