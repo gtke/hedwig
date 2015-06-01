@@ -28,7 +28,7 @@ def hedwig():
         return send_file(filename, mimetype='image/gif')
     except GiphyApiException:
         try:
-            filename = g.translate((keyword).media_url
+            filename = g.translate(keyword).media_url
             return send_file(filename, mimetype='image/gif')
         except GiphyApiException:
             try:
