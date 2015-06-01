@@ -1,4 +1,4 @@
 wsgiref==0.1.2
 giphypop==0.2
-pyslack
 flask==0.10.1
+-e git+git://github.com/loisaidasam/pyslack.git#egg=pyslack
