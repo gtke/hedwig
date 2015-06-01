@@ -39,6 +39,8 @@ def hedwig():
     payload = {'text': 'muteli'}
     requests.post('https://hooks.slack.com/services/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',
                   payload)
+    return 'hey'
+
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
