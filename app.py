@@ -24,16 +24,16 @@ def hedwig():
     gif     = translate(keyword)
 
     try:
-        return send_file(g.random_gif(keyword).media_url,
-                        mimetype='image/gif')
+        filename = g.random_gif(keyword).media_url
+        return send_file(filename, mimetype='image/gif')
     except GiphyApiException:
         try:
-            return send_file(g.translate(keyword).media_url,
-                            mimetype='image/gif')
+            filename = g.translate((keyword).media_url
+            return send_file(filename, mimetype='image/gif')
         except GiphyApiException:
             try:
-                return send_file(g.search_list(keyword, limit=1)[0].media_url,
-                                mimetype='image/gif')
+                filename = g.search_list(keyword, limit=1[0]).media_url
+                return send_file(filename, mimetype='image/gif')
             except (GiphyApiException, IndexError):
                     pass
 
