@@ -7,7 +7,7 @@ from giphypop import translate
 from slacker import Slacker
 
 
-token = 'xoxp-5029789749-5008179958-5155693274-5c4db1'
+token = 'SLACK_TOKEN'
 slack = Slacker(token)
 app = Flask(__name__)
 key = 'dc6zaTOxFJmzC' #Giphy public key
@@ -22,7 +22,7 @@ def hello():
 def hedwig():
     keyword  = request.values.get('text')
     gif      = translate(keyword)
-    channel  = '#bullshit'
+    channel  = '#hedwig'
     filename = 'https://media1.giphy.com/media/fAT2Db0j0Mblu/200_s.gif'
     try:
         filename = g.random_gif(keyword).media_url
