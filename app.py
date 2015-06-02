@@ -20,8 +20,9 @@ def hello():
 
 @app.route('/hedwig', methods=['post'])
 def hedwig():
-    keyword = request.values.get('text')
-    gif     = translate(keyword)
+    keyword  = request.values.get('text')
+    gif      = translate(keyword)
+    channel  = '#bullshit'
     filename = 'https://media1.giphy.com/media/fAT2Db0j0Mblu/200_s.gif'
     try:
         filename = g.random_gif(keyword).media_url
@@ -34,7 +35,7 @@ def hedwig():
             except (GiphyApiException, IndexError):
                     pass
 
-    slack.chat.post_message('#bullshit', filename, username='Hedwig')
+    slack.chat.post_message(channel, filename, username='Hedwig')
     return ''
 
 if __name__ == "__main__":
