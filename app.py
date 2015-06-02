@@ -7,7 +7,7 @@ from giphypop import translate
 from slacker import Slacker
 
 
-token = 'SLACK_TOKEN'
+token = 'xoxp-5029789749-5008179958-5155693274-5c4db1'
 slack = Slacker(token)
 app = Flask(__name__)
 key = 'dc6zaTOxFJmzC' #Giphy public key
